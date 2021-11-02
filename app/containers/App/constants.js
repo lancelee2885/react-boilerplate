@@ -8,3 +8,7 @@
  * Follow this format:
  * export const YOUR_ACTION_CONSTANT = 'yourproject/YourContainer/YOUR_ACTION_CONSTANT';
  */
+
+export const LOAD_ITEMS = 'boilerplate/App/LOAD_ITEMS';
+export const LOAD_ITEMS_SUCCESS = 'boilerplate/App/LOAD_ITEMS_SUCCESS';
+export const LOAD_ITEMS_ERROR = 'boilerplate/App/LOAD_ITEMS_ERROR';
