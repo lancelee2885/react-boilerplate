@@ -4,7 +4,6 @@ import { IconContext } from 'react-icons/lib';
 import {
   Nav,
   NavbarContainer,
-  NavLogo,
   NavMenu,
   NavItem,
   NavLinks,
@@ -18,15 +17,14 @@ function Navbar() {
     <IconContext.Provider value={{ color: '#fff' }}>
       <Nav>
         <NavbarContainer>
-          <NavLogo to="/">HOME</NavLogo>
           <NavMenu>
             <NavItem>
-              <NavLinks to="/cryptos" exact="true">
+              <NavLinks to="/" exact="true">
                 Cryptos
               </NavLinks>
             </NavItem>
             <NavItem>
-              <NavLinks to="/addcryptos" exact="true">
+              <NavLinks to="/add" exact="true">
                 Add Crypto
               </NavLinks>
             </NavItem>
