@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Navbar /> should render and match the snapshot 1`] = `
+<nav
+  className="NavbarElements__Nav-sc-1a5xcmq-0 RMoKH"
+>
+  <div
+    className="NavbarElements__NavbarContainer-sc-1a5xcmq-1 jjbpPb"
+  >
+    <ul
+      className="NavbarElements__NavMenu-sc-1a5xcmq-2 dZGELk"
+    >
+      <li
+        className="NavbarElements__NavItem-sc-1a5xcmq-3 eiByiO"
+      >
+        <a
+          className="NavbarElements__NavLinks-sc-1a5xcmq-4 chyWMJ"
+          exact="true"
+          href="/"
+          onClick={[Function]}
+        >
+          Cryptos
+        </a>
+      </li>
+      <li
+        className="NavbarElements__NavItem-sc-1a5xcmq-3 eiByiO"
+      >
+        <a
+          className="NavbarElements__NavLinks-sc-1a5xcmq-4 chyWMJ"
+          exact="true"
+          href="/add"
+          onClick={[Function]}
+        >
+          Add Crypto
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+`;
