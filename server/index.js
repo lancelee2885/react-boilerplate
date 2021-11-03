@@ -15,15 +15,18 @@ const { resolve } = require('path');
 const app = express();
 const cryptocurrency = require('./crypto');
 
+const storedCryptocurrencyList = [...cryptocurrency];
 // JSON Body Parser
 app.use(express.json());
 
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
 
-app.get('/api', (req, res) => res.json({ cryptocurrency }));
+app.get('/api', (req, res) =>
+  res.json({ cryptocurrency: storedCryptocurrencyList }),
+);
 
 app.post('/api', (req, res) => {
-  cryptocurrency.push(req.body.newItem);
+  storedCryptocurrencyList.push(req.body.newItem);
   return res.status(201).send(`${req.body.newItem} added`);
 });
 
