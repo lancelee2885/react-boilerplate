@@ -13,17 +13,17 @@ const ngrok =
     : false;
 const { resolve } = require('path');
 const app = express();
+const cryptocurrency = require('./crypto');
 
 // JSON Body Parser
 app.use(express.json());
 
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
-const backend = ['string1', 'string2', 'string3'];
 
-app.get('/api', (req, res) => res.json({ backend }));
+app.get('/api', (req, res) => res.json({ cryptocurrency }));
 
 app.post('/api', (req, res) => {
-  backend.push(req.body.newItem);
+  cryptocurrency.push(req.body.newItem);
   return res.status(201).send(`${req.body.newItem} added`);
 });
 
