@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LoadingSpinner /> should render and match the snapshot 1`] = `
+<div
+  className="ItemsElements__ItemsCard-sc-1meohdj-0 jUTIFq"
+>
+  <img
+    className="ItemsElements__ItemsIcon-sc-1meohdj-1 knvHj"
+  />
+  <h2
+    className="ItemsElements__ItemsH2-sc-1meohdj-3 cqEVjy"
+  />
+  <p
+    className="ItemsElements__ItemsP-sc-1meohdj-4 hUBVu"
+  />
+</div>
+`;
