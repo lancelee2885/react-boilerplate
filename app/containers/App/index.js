@@ -21,7 +21,7 @@ export default function App() {
     <div>
       <Navbar />
       <Switch>
-        <Route exact path="/cryptos" component={HomePage} />
+        <Route exact path="/" component={HomePage} />
         <Route component={NotFoundPage} />
       </Switch>
       <GlobalStyle />
