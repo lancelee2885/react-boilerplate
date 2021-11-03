@@ -5,14 +5,65 @@
  *
  */
 
-import React from 'react';
-import { FormattedMessage } from 'react-intl';
-import messages from './messages';
+import React, { useEffect, memo } from 'react';
+import PropTypes from 'prop-types';
+import { createStructuredSelector } from 'reselect';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { useInjectReducer } from 'utils/injectReducer';
+import { useInjectSaga } from 'utils/injectSaga';
+import { makeCryptosSelector, makeLoadingSelector } from './selector';
 
-export default function HomePage() {
+import { loadCryptos } from './actions';
+
+import reducer from './reducer';
+import saga from './saga';
+
+export function HomePage({ cryptos, loading, loadCryptosProp }) {
+  useInjectReducer({ key: 'homePage', reducer });
+  useInjectSaga({ key: 'homePage', saga });
+
+  useEffect(function fetchDataOnMount() {
+    function fetchData() {
+      loadCryptosProp();
+    }
+    fetchData();
+  }, []);
+
   return (
-    <h1>
-      <FormattedMessage {...messages.header} />
-    </h1>
+    <div>
+      {cryptos.map(c => (
+        <div key={c.symbol}>
+          <p>{c.symbol}</p>
+          <p>{c.name}</p>
+          <p>{c.description}</p>
+          <p>{c.iconURL}</p>
+        </div>
+      ))}
+    </div>
   );
 }
+
+HomePage.propTypes = {
+  cryptos: PropTypes.array,
+  loading: PropTypes.bool,
+  loadCryptosProp: PropTypes.func,
+};
+
+const mapStateToProps = createStructuredSelector({
+  cryptos: makeCryptosSelector(),
+  loading: makeLoadingSelector(),
+});
+
+export function mapDispatchToProps(dispatch) {
+  return {
+    loadCryptosProp: () => dispatch(loadCryptos()),
+  };
+}
+
+const withConnect = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+);
+
+export default compose(withConnect)(HomePage);
