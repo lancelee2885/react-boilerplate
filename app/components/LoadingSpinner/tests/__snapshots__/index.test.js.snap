@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LoadingSpinner /> should render and match the snapshot 1`] = `
+<div
+  className="LoadingElements__Spinner-sc-1f42l8z-0 cJUGse"
+/>
+`;
