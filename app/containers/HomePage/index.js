@@ -12,7 +12,11 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { useInjectReducer } from 'utils/injectReducer';
 import { useInjectSaga } from 'utils/injectSaga';
-import { makeCryptosSelector, makeLoadingSelector } from './selector';
+import {
+  makeCryptosSelector,
+  makeLoadingSelector,
+  makeErrorSelector,
+} from './selector';
 
 import { loadCryptos } from './actions';
 
@@ -23,7 +27,7 @@ import Item from '../../components/Item';
 import { ItemsContanier, ItemsWrapper } from './Wrapper';
 import LoadingSpinner from '../../components/LoadingSpinner';
 
-export function HomePage({ cryptos, loading, loadCryptosProp }) {
+export function HomePage({ cryptos, loading, loadCryptosProp, error }) {
   useInjectReducer({ key: 'homePage', reducer });
   useInjectSaga({ key: 'homePage', saga });
 
@@ -38,6 +42,7 @@ export function HomePage({ cryptos, loading, loadCryptosProp }) {
     <ItemsContanier>
       <ItemsWrapper>
         {loading ? <LoadingSpinner /> : null}
+        {error ? <p>Something Went Wrong</p> : null}
         {cryptos.map(c => (
           <Item name={c.name} description={c.description} imgURL={c.iconURL} />
         ))}
@@ -49,12 +54,14 @@ export function HomePage({ cryptos, loading, loadCryptosProp }) {
 HomePage.propTypes = {
   cryptos: PropTypes.array,
   loading: PropTypes.bool,
+  error: PropTypes.bool,
   loadCryptosProp: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
   cryptos: makeCryptosSelector(),
   loading: makeLoadingSelector(),
+  error: makeErrorSelector(),
 });
 
 export function mapDispatchToProps(dispatch) {

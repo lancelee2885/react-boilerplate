@@ -33,5 +33,16 @@ const makeLoadingSelector = () =>
     substate => substate.loading,
   );
 
+const makeErrorSelector = () =>
+  createSelector(
+    selectHomePageDomain,
+    substate => substate.error,
+  );
+
 export default makeSelectHomePage;
-export { makeSelectHomePage, makeCryptosSelector, makeLoadingSelector };
+export {
+  makeSelectHomePage,
+  makeCryptosSelector,
+  makeLoadingSelector,
+  makeErrorSelector,
+};

@@ -18,7 +18,7 @@ function Navbar() {
     <IconContext.Provider value={{ color: '#fff' }}>
       <Nav>
         <NavbarContainer>
-          <NavLogo to="/">LOGO</NavLogo>
+          <NavLogo to="/">HOME</NavLogo>
           <NavMenu>
             <NavItem>
               <NavLinks to="/cryptos" exact="true">
