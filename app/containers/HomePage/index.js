@@ -16,7 +16,7 @@ import {
   makeCryptosSelector,
   makeLoadingSelector,
   makeErrorSelector,
-} from './selector';
+} from './selectors';
 
 import { loadCryptos } from './actions';
 
