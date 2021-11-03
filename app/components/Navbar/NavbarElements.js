@@ -1,15 +1,9 @@
 import styled from 'styled-components';
 import { Link as LinkRouter } from 'react-router-dom';
 
-/**
- * @category Styled Components
- * @subcategory NavbarElements
- * @component
- */
 export const Nav = styled.nav`
   background: black;
   height: 80px;
-  margin-top: -80px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,11 +16,6 @@ export const Nav = styled.nav`
   }
 `;
 
-/**
- * @category Styled Components
- * @subcategory NavbarElements
- * @component
- */
 export const NavbarContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -37,11 +26,6 @@ export const NavbarContainer = styled.div`
   max-width: 1100px;
 `;
 
-/**
- * @category Styled Components
- * @subcategory NavbarElements
- * @component
- */
 export const NavLogo = styled(LinkRouter)`
   color: #fff;
   justify-self: flex-start;
@@ -54,11 +38,6 @@ export const NavLogo = styled(LinkRouter)`
   text-decoration: none;
 `;
 
-/**
- * @category Styled Components
- * @subcategory NavbarElements
- * @component
- */
 export const NavMenu = styled.ul`
   display: flex;
   align-items: center;
@@ -71,25 +50,15 @@ export const NavMenu = styled.ul`
   }
 `;
 
-/**
- * @category Styled Components
- * @subcategory NavbarElements
- * @component
- */
 export const NavItem = styled.li`
   height: auto;
 `;
 
-/**
- * @category Styled Components
- * @subcategory NavbarElements
- * @component
- */
 export const NavLinks = styled(LinkRouter)`
   color: #fff;
   justify-self: flex-start;
   cursor: pointer;
-  font-size: 1.5rem;
+  font-size: 1rem;
   display: flex;
   align-items: center;
   margin-left: 24px;

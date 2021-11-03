@@ -10,15 +10,8 @@ import {
   NavLinks,
 } from './NavbarElements';
 
-/** Navbar: Navigation bar appears and stays on top of the page throughout scrolling.
- * Props:
- *  - toggle: function rec'd from parent(Home).
- *
- * States:
- *  - scrollNav: When scroll over a certain distance, it will cause a state change.
- *
- * @category React Components
- * @component
+/** Navbar:
+ *  Navigation bar appears and stays on top of the page throughout scrolling.
  */
 function Navbar() {
   return (
@@ -34,7 +27,7 @@ function Navbar() {
             </NavItem>
             <NavItem>
               <NavLinks to="/addcryptos" exact="true">
-                Add Your Crypto
+                Add Crypto
               </NavLinks>
             </NavItem>
           </NavMenu>
