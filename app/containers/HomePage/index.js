@@ -19,6 +19,10 @@ import { loadCryptos } from './actions';
 import reducer from './reducer';
 import saga from './saga';
 
+import Item from '../../components/Item';
+import { ItemsContanier, ItemsWrapper } from './Wrapper';
+import LoadingSpinner from '../../components/LoadingSpinner';
+
 export function HomePage({ cryptos, loading, loadCryptosProp }) {
   useInjectReducer({ key: 'homePage', reducer });
   useInjectSaga({ key: 'homePage', saga });
@@ -31,16 +35,14 @@ export function HomePage({ cryptos, loading, loadCryptosProp }) {
   }, []);
 
   return (
-    <div>
-      {cryptos.map(c => (
-        <div key={c.symbol}>
-          <p>{c.symbol}</p>
-          <p>{c.name}</p>
-          <p>{c.description}</p>
-          <p>{c.iconURL}</p>
-        </div>
-      ))}
-    </div>
+    <ItemsContanier>
+      <ItemsWrapper>
+        {loading ? <LoadingSpinner /> : null}
+        {cryptos.map(c => (
+          <Item name={c.name} description={c.description} imgURL={c.iconURL} />
+        ))}
+      </ItemsWrapper>
+    </ItemsContanier>
   );
 }
 
