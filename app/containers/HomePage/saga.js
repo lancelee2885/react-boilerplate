@@ -1,9 +1,9 @@
-import { all, call, put, takeLatest } from 'redux-saga/effects';
+import { call, put, takeLatest } from 'redux-saga/effects';
 import request from 'utils/request';
 import { cryptosLoaded, cryptossLoadingError } from './actions';
 import { LOAD_CRYPTO } from './constants';
 
-function* fetchCryptos() {
+export function* fetchCryptos() {
   const URL = 'http://localhost:3000/api/';
 
   try {
@@ -15,12 +15,6 @@ function* fetchCryptos() {
   }
 }
 
-function* loadCryptos() {
+export default function* loadCryptos() {
   yield takeLatest(LOAD_CRYPTO, fetchCryptos);
-}
-
-// Individual exports for testing
-export default function* homePageSaga() {
-  // See example in containers/HomePage/saga.js
-  yield all([loadCryptos()]);
 }
