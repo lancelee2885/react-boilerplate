@@ -3,6 +3,7 @@ import { Link as LinkRouter } from 'react-router-dom';
 
 export const Nav = styled.nav`
   background: black;
+  opacity: 0.8;
   height: 80px;
   display: flex;
   justify-content: center;
@@ -11,14 +12,11 @@ export const Nav = styled.nav`
   position: sticky;
   top: 0;
   z-index: 10;
-  @media screen and (max-width: 960px) {
-    transition: 0.8s all ease-in;
-  }
 `;
 
 export const NavbarContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   height: 80px;
   z-index: 1;
   width: 100%;
@@ -26,28 +24,12 @@ export const NavbarContainer = styled.div`
   max-width: 1100px;
 `;
 
-export const NavLogo = styled(LinkRouter)`
-  color: #fff;
-  justify-self: flex-start;
-  cursor: pointer;
-  font-size: 1.5rem;
-  display: flex;
-  align-items: center;
-  margin-left: 24px;
-  font-weight: bold;
-  text-decoration: none;
-`;
-
 export const NavMenu = styled.ul`
   display: flex;
   align-items: center;
   list-style: none;
   text-align: center;
-  margin-right: -24px;
   margin-top: 20px;
-  @media screen and (max-width: 768px) {
-    display: none;
-  }
 `;
 
 export const NavItem = styled.li`
@@ -61,7 +43,8 @@ export const NavLinks = styled(LinkRouter)`
   font-size: 1rem;
   display: flex;
   align-items: center;
-  margin-left: 24px;
+  margin-left: 12px;
+  margin-right: 12px;
   font-weight: bold;
   text-decoration: none;
 `;
