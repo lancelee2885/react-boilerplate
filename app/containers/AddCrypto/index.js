@@ -13,68 +13,63 @@ import { compose } from 'redux';
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
 import Form from './Form';
-import Input from './Input';
+import { Input, TextArea } from './Input';
+import SubmitBtn from '../../components/SubmitBtn';
+import FormWrapper from './Wrapper';
 import makeSelectAddCrypto, {
   makeFormDataSelector,
   makeIsSubmittedSelector,
+  makeSubmittedSelector,
 } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import { changeFormData, submitFormData } from './actions';
-import SubmitBtn from '../../components/SubmitBtn';
 
 export function AddCrypto({
   formData,
   onChangeFormData,
   onSubmitForm,
   isSubmitted,
+  submitted,
 }) {
   useInjectReducer({ key: 'addCrypto', reducer });
   useInjectSaga({ key: 'addCrypto', saga });
 
   return (
-    <div>
-      <Form onSubmit={evt => onSubmitForm(evt)}>
-        <label htmlFor="symbol">
-          Symbol:
-          <Input
-            type="text"
-            name="symbol"
-            value={formData.symbol}
-            onChange={evt => onChangeFormData(evt, formData)}
-          />
-        </label>
-        <label htmlFor="name">
-          Name:
-          <Input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={evt => onChangeFormData(evt, formData)}
-          />
-        </label>
-        <label htmlFor="description">
-          Description:
-          <Input
-            type="text"
-            name="description"
-            value={formData.description}
-            onChange={evt => onChangeFormData(evt, formData)}
-          />
-        </label>
-        <label htmlFor="icon">
-          Icon Link:
-          <Input
-            type="text"
-            name="iconURL"
-            value={formData.iconURL}
-            onChange={evt => onChangeFormData(evt, formData)}
-          />
-        </label>
-        <SubmitBtn />
+    <FormWrapper>
+      <Form onSubmit={evt => onSubmitForm(evt, formData)}>
+        <label htmlFor="symbol">Symbol:</label>
+        <Input
+          type="text"
+          name="symbol"
+          value={formData.symbol}
+          onChange={evt => onChangeFormData(evt, formData)}
+        />
+        <label htmlFor="name">Name:</label>
+        <Input
+          type="text"
+          name="name"
+          value={formData.name}
+          onChange={evt => onChangeFormData(evt, formData)}
+        />
+        <label htmlFor="description">Description:</label>
+        <TextArea
+          type="text"
+          name="description"
+          value={formData.description}
+          onChange={evt => onChangeFormData(evt, formData)}
+        />
+        <label htmlFor="icon">Icon Link:</label>
+        <Input
+          type="text"
+          name="iconURL"
+          value={formData.iconURL}
+          onChange={evt => onChangeFormData(evt, formData)}
+        />
+        <SubmitBtn text="Submit" />
       </Form>
-      {isSubmitted ? <p>A new cryptocurrency is added</p> : null}
-    </div>
+      {isSubmitted ? <p> {submitted} is added</p> : null}
+    </FormWrapper>
   );
 }
 
@@ -83,12 +78,14 @@ AddCrypto.propTypes = {
   onSubmitForm: PropTypes.func,
   formData: PropTypes.object,
   isSubmitted: PropTypes.bool,
+  submitted: PropTypes.string,
 };
 
 const mapStateToProps = createStructuredSelector({
   addCrypto: makeSelectAddCrypto(),
   formData: makeFormDataSelector(),
   isSubmitted: makeIsSubmittedSelector(),
+  submitted: makeSubmittedSelector(),
 });
 
 export function mapDispatchToProps(dispatch) {
@@ -100,9 +97,9 @@ export function mapDispatchToProps(dispatch) {
       };
       dispatch(changeFormData(newData));
     },
-    onSubmitForm: evt => {
+    onSubmitForm: (evt, formData) => {
       evt.preventDefault();
-      dispatch(submitFormData());
+      dispatch(submitFormData(formData));
     },
   };
 }
