@@ -1,8 +1,11 @@
 import styled from 'styled-components';
 
 export const SubmitBtnWrapper = styled.button`
-  margin-top: 32px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  color: #ffffff;
+  background-color: transparent;
+  border: 2px solid #2e2e2e;
+  cursor: pointer;
+  padding: 10px 30px;
+  position: relative;
+  text-align: center;
 `;
