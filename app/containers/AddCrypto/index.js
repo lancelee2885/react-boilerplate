@@ -14,18 +14,31 @@ import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
 import Form from './Form';
 import Input from './Input';
-import makeSelectAddCrypto, { makeFormDataSelector } from './selectors';
+import makeSelectAddCrypto, {
+  makeFormDataSelector,
+  makeIsSubmittedSelector,
+} from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import { changeFormData } from './actions';
+import { changeFormData, submitFormData } from './actions';
+import SubmitBtn from '../../components/SubmitBtn';
 
-export function AddCrypto({ formData, onChangeFormData }) {
+export function AddCrypto({
+  formData,
+  onChangeFormData,
+  onSubmitForm,
+  isSubmitted,
+}) {
   useInjectReducer({ key: 'addCrypto', reducer });
   useInjectSaga({ key: 'addCrypto', saga });
 
+  if (isSubmitted) {
+    return <p>Crypto Sumbitted.</p>;
+  }
+
   return (
     <div>
-      <Form>
+      <Form onSubmit={evt => onSubmitForm(evt)}>
         <label htmlFor="symbol">
           Symbol:
           <Input
@@ -57,11 +70,12 @@ export function AddCrypto({ formData, onChangeFormData }) {
           Icon Link:
           <Input
             type="text"
-            name="icon"
-            value={formData.icon}
+            name="iconURL"
+            value={formData.iconURL}
             onChange={evt => onChangeFormData(evt, formData)}
           />
         </label>
+        <SubmitBtn />
       </Form>
     </div>
   );
@@ -69,12 +83,15 @@ export function AddCrypto({ formData, onChangeFormData }) {
 
 AddCrypto.propTypes = {
   onChangeFormData: PropTypes.func,
+  onSubmitForm: PropTypes.func,
   formData: PropTypes.object,
+  isSubmitted: PropTypes.bool,
 };
 
 const mapStateToProps = createStructuredSelector({
   addCrypto: makeSelectAddCrypto(),
   formData: makeFormDataSelector(),
+  isSubmitted: makeIsSubmittedSelector(),
 });
 
 export function mapDispatchToProps(dispatch) {
@@ -85,6 +102,10 @@ export function mapDispatchToProps(dispatch) {
         [evt.target.name]: evt.target.value,
       };
       dispatch(changeFormData(newData));
+    },
+    onSubmitForm: evt => {
+      evt.preventDefault();
+      dispatch(submitFormData());
     },
   };
 }
