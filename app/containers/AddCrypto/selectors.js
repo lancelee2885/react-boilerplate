@@ -21,5 +21,11 @@ const makeSelectAddCrypto = () =>
     substate => substate,
   );
 
+const makeFormDataSelector = () =>
+  createSelector(
+    selectAddCryptoDomain,
+    substate => substate.formData,
+  );
+
 export default makeSelectAddCrypto;
-export { selectAddCryptoDomain };
+export { selectAddCryptoDomain, makeFormDataSelector };

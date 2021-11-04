@@ -4,10 +4,14 @@
  *
  */
 
-import { DEFAULT_ACTION } from './constants';
+import { CHANGE_FORM_DATA } from './constants';
 
-export function defaultAction() {
+/**
+ * Changes the input fields of the form
+ */
+export function changeFormData(formData) {
   return {
-    type: DEFAULT_ACTION,
+    type: CHANGE_FORM_DATA,
+    formData,
   };
 }

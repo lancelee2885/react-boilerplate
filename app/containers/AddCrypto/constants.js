@@ -4,4 +4,4 @@
  *
  */
 
-export const DEFAULT_ACTION = 'app/AddCrypto/DEFAULT_ACTION';
+export const CHANGE_FORM_DATA = 'app/AddCrypto/CHANGE_FORM_DATA';

@@ -4,15 +4,23 @@
  *
  */
 import produce from 'immer';
-import { DEFAULT_ACTION } from './constants';
+import { CHANGE_FORM_DATA } from './constants';
 
-export const initialState = {};
+export const initialState = {
+  formData: {
+    symbol: '',
+    name: '',
+    description: '',
+    icon: '',
+  },
+};
 
 /* eslint-disable default-case, no-param-reassign */
 const addCryptoReducer = (state = initialState, action) =>
-  produce(state, (/* draft */) => {
+  produce(state, draft => {
     switch (action.type) {
-      case DEFAULT_ACTION:
+      case CHANGE_FORM_DATA:
+        draft.formData = action.formData;
         break;
     }
   });
