@@ -16,6 +16,7 @@ import Form from './Form';
 import { Input, TextArea } from './Input';
 import SubmitBtn from '../../components/SubmitBtn';
 import FormWrapper from './Wrapper';
+import LoadingSpinner from '../../components/LoadingSpinner';
 import makeSelectAddCrypto, {
   makeFormDataSelector,
   makeIsSubmittedSelector,
@@ -24,6 +25,7 @@ import makeSelectAddCrypto, {
 import reducer from './reducer';
 import saga from './saga';
 import { changeFormData, submitFormData } from './actions';
+import { makeLoadingSelector } from '../HomePage/selectors';
 
 export function AddCrypto({
   formData,
@@ -31,6 +33,7 @@ export function AddCrypto({
   onSubmitForm,
   isSubmitted,
   submitted,
+  loading,
 }) {
   useInjectReducer({ key: 'addCrypto', reducer });
   useInjectSaga({ key: 'addCrypto', saga });
@@ -42,6 +45,7 @@ export function AddCrypto({
         <Input
           type="text"
           name="symbol"
+          required
           value={formData.symbol}
           onChange={evt => onChangeFormData(evt, formData)}
         />
@@ -49,6 +53,7 @@ export function AddCrypto({
         <Input
           type="text"
           name="name"
+          required
           value={formData.name}
           onChange={evt => onChangeFormData(evt, formData)}
         />
@@ -56,19 +61,22 @@ export function AddCrypto({
         <TextArea
           type="text"
           name="description"
+          required
           value={formData.description}
           onChange={evt => onChangeFormData(evt, formData)}
         />
         <label htmlFor="icon">Icon Link:</label>
         <Input
-          type="text"
+          type="url"
           name="iconURL"
+          required
           value={formData.iconURL}
           onChange={evt => onChangeFormData(evt, formData)}
         />
         <SubmitBtn text="Submit" />
       </Form>
-      {isSubmitted ? <p> {submitted} is added</p> : null}
+      {loading ? <LoadingSpinner /> : null}
+      {isSubmitted ? <p> {submitted.name} is added</p> : null}
     </FormWrapper>
   );
 }
@@ -78,7 +86,8 @@ AddCrypto.propTypes = {
   onSubmitForm: PropTypes.func,
   formData: PropTypes.object,
   isSubmitted: PropTypes.bool,
-  submitted: PropTypes.string,
+  submitted: PropTypes.object,
+  loading: PropTypes.bool,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -86,6 +95,7 @@ const mapStateToProps = createStructuredSelector({
   formData: makeFormDataSelector(),
   isSubmitted: makeIsSubmittedSelector(),
   submitted: makeSubmittedSelector(),
+  loading: makeLoadingSelector(),
 });
 
 export function mapDispatchToProps(dispatch) {

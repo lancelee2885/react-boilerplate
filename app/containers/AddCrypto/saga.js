@@ -8,7 +8,7 @@ import request from 'utils/request';
 import { SUBMIT_FORM_DATA } from './constants';
 import { cryptosLoaded, cryptossLoadingError } from '../HomePage/actions';
 
-import { makeFormDataSelector } from './selectors';
+import { makeSubmittedSelector } from './selectors';
 
 const requestURL = `http://localhost:3000/api/`;
 
@@ -16,6 +16,7 @@ const requestURL = `http://localhost:3000/api/`;
 async function submitToServer(data) {
   try {
     await axios.post(requestURL, data);
+    console.log('api call: data is ', data);
   } catch (err) {
     console.log(err);
   }
@@ -26,7 +27,8 @@ async function submitToServer(data) {
  */
 export function* createNewCrypto() {
   // Select formData from store
-  const data = yield select(makeFormDataSelector());
+  const data = yield select(makeSubmittedSelector());
+  console.log('Data selector', data);
 
   try {
     // Call our request helper (see 'utils/request')
