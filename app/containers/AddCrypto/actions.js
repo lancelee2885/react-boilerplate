@@ -19,8 +19,9 @@ export function changeFormData(formData) {
 /**
  * Changes the input fields of the form
  */
-export function submitFormData() {
+export function submitFormData(formData) {
   return {
     type: SUBMIT_FORM_DATA,
+    formData,
   };
 }
