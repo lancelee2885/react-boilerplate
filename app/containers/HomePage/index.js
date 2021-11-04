@@ -38,6 +38,10 @@ export function HomePage({ cryptos, loading, loadCryptosProp, error }) {
     fetchData();
   }, []);
 
+  if (error) {
+    return <p>Something went wrong</p>;
+  }
+
   return (
     <ItemsContanier>
       <ItemsWrapper>
