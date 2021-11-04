@@ -26,7 +26,6 @@ async function submitToServer(data) {
 export function* createNewCrypto() {
   // Select username from store
   const data = yield select(makeFormDataSelector());
-  console.log('DATA from saga', data);
 
   try {
     // Call our request helper (see 'utils/request')
