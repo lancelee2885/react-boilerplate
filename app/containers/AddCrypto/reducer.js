@@ -14,6 +14,7 @@ export const initialState = {
     iconURL: '',
   },
   isSubmitted: false,
+  submitted: '',
 };
 
 /* eslint-disable default-case, no-param-reassign */
@@ -21,10 +22,13 @@ const addCryptoReducer = (state = initialState, action) =>
   produce(state, draft => {
     switch (action.type) {
       case CHANGE_FORM_DATA:
+        draft.isSubmitted = false;
         draft.formData = action.formData;
         break;
       case SUBMIT_FORM_DATA:
         draft.isSubmitted = true;
+        draft.submitted = action.formData.name;
+        draft.formData = initialState.formData;
         break;
     }
   });

@@ -33,5 +33,16 @@ const makeIsSubmittedSelector = () =>
     substate => substate.isSubmitted,
   );
 
+const makeSubmittedSelector = () =>
+  createSelector(
+    selectAddCryptoDomain,
+    substate => substate.submitted,
+  );
+
 export default makeSelectAddCrypto;
-export { selectAddCryptoDomain, makeFormDataSelector, makeIsSubmittedSelector };
+export {
+  selectAddCryptoDomain,
+  makeFormDataSelector,
+  makeIsSubmittedSelector,
+  makeSubmittedSelector,
+};
