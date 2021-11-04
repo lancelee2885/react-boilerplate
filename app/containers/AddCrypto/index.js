@@ -32,10 +32,6 @@ export function AddCrypto({
   useInjectReducer({ key: 'addCrypto', reducer });
   useInjectSaga({ key: 'addCrypto', saga });
 
-  if (isSubmitted) {
-    return <p>Crypto Sumbitted.</p>;
-  }
-
   return (
     <div>
       <Form onSubmit={evt => onSubmitForm(evt)}>
@@ -77,6 +73,7 @@ export function AddCrypto({
         </label>
         <SubmitBtn />
       </Form>
+      {isSubmitted ? <p>A new cryptocurrency is added</p> : null}
     </div>
   );
 }
