@@ -26,8 +26,8 @@ app.get('/api', (req, res) =>
 );
 
 app.post('/api', (req, res) => {
-  storedCryptocurrencyList.push(req.body.newItem);
-  return res.status(201).send(`${req.body.newItem} added`);
+  storedCryptocurrencyList.push(req.body);
+  return res.status(201).send(`added`);
 });
 
 // In production we need to pass these values in instead of relying on webpack
