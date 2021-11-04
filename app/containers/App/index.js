@@ -11,6 +11,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import HomePage from 'containers/HomePage/Loadable';
+import AddCrypto from 'containers/AddCrypto/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Navbar from '../../components/Navbar';
 
@@ -22,6 +23,7 @@ export default function App() {
       <Navbar />
       <Switch>
         <Route exact path="/" component={HomePage} />
+        <Route exact path="/add" component={AddCrypto} />
         <Route component={NotFoundPage} />
       </Switch>
       <GlobalStyle />
