@@ -39,10 +39,24 @@ const makeSubmittedSelector = () =>
     substate => substate.submitted,
   );
 
+const makeLoadingSelector = () =>
+  createSelector(
+    selectAddCryptoDomain,
+    substate => substate.loading,
+  );
+
+const makeErrorSelector = () =>
+  createSelector(
+    selectAddCryptoDomain,
+    substate => substate.err,
+  );
+
 export default makeSelectAddCrypto;
 export {
   selectAddCryptoDomain,
   makeFormDataSelector,
   makeIsSubmittedSelector,
   makeSubmittedSelector,
+  makeLoadingSelector,
+  makeErrorSelector,
 };
