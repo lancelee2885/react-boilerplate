@@ -2,10 +2,10 @@
 
 exports[`<HomePage /> should render and match the snapshot 1`] = `
 <div
-  class="Wrapper__ItemsContanier-vsnnp1-0 bhGQAu"
+  class="Wrapper__ItemsContanier-vsnnp1-0 bquUeX"
 >
   <div
-    class="Wrapper__ItemsWrapper-vsnnp1-1 eEUWXJ"
+    class="Wrapper__ItemsWrapper-vsnnp1-1 knjxCi"
   />
 </div>
 `;
