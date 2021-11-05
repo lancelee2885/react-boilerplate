@@ -21,7 +21,9 @@ async function submitToServer(data) {
 }
 
 /**
- * update states to load new sets of cryptos
+ * calls api to sumbit form data.
+ * on success, it will triger submitted action.
+ * on failiure, it will triger error handler.
  */
 export function* createNewCrypto() {
   // Select formData from store

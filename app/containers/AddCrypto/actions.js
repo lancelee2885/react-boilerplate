@@ -21,18 +21,12 @@ export function changeFormData(formData) {
   };
 }
 
-/**
- * Changes the input fields of the form
- */
 export function submitFormData() {
   return {
     type: SUBMIT_FORM_DATA,
   };
 }
 
-/**
- * Changes the input fields of the form
- */
 export function formDataSubmitted(formData) {
   return {
     type: SUBMIT_FORM_DATA_SUCCESS,
@@ -40,9 +34,6 @@ export function formDataSubmitted(formData) {
   };
 }
 
-/**
- * Changes the input fields of the form
- */
 export function formDataError(err) {
   return {
     type: SUBMIT_FORM_DATA_ERROR,

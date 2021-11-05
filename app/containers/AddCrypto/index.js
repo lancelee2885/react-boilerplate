@@ -1,6 +1,6 @@
 /**
  *
- * AddCrypto
+ * AddCrypto: A page dedicating to adding a crypto to backend using a form submission.
  *
  */
 
@@ -40,6 +40,7 @@ export function AddCrypto({
   useInjectReducer({ key: 'addCrypto', reducer });
   useInjectSaga({ key: 'addCrypto', saga });
 
+  // determines if loading/errors/success messages
   function showLoading() {
     if (loading) {
       return <LoadingSpinner />;
