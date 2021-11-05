@@ -49,7 +49,7 @@ export function AddCrypto({
       return <p> Something Went Wrong</p>;
     }
     if (isSubmitted) {
-      return <p> {submitted.name} is added</p>;
+      return <p> {submitted.name} was added</p>;
     }
     return null;
   }
