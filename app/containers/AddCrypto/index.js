@@ -56,6 +56,7 @@ export function AddCrypto({
 
   return (
     <FormWrapper>
+      {showLoading()}
       <Form onSubmit={evt => onSubmitForm(evt)}>
         <label htmlFor="symbol">Symbol:</label>
         <Input
@@ -91,7 +92,6 @@ export function AddCrypto({
         />
         <SubmitBtn text="Submit" />
       </Form>
-      {showLoading()}
     </FormWrapper>
   );
 }

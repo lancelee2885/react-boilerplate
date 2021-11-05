@@ -5,7 +5,7 @@ const Form = styled.form`
   background-color: #000000;
   border-radius: 20px;
   box-sizing: border-box;
-  height: 800px;
+  height: 600px;
   padding: 20px;
   width: 600px;
   justify-content: center;

@@ -2,13 +2,14 @@ import styled from 'styled-components';
 
 const FormWrapper = styled.div`
   color: #ffffff;
-  align-items: center;
   background-color: #000;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  display: grid;
   align-items: center;
-  height: 90vh;
+  align-content: flex-start;
+  justify-content: center;
+  justify-items: center;
+  height: 1000px;
+  width: 100%;
 `;
 
 export default FormWrapper;

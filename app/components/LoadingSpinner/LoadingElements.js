@@ -12,7 +12,6 @@ const rotate360 = keyframes`
 const Spinner = styled.div`
   animation: ${rotate360} 1s linear infinite;
   transform: translateZ(0);
-
   border-top: 3px solid grey;
   border-right: 3px solid grey;
   border-bottom: 3px solid grey;
