@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AddCrypto /> should render and match the snapshot 1`] = `
+<div
+  class="Wrapper__FormWrapper-n4amsx-0 SvHUk"
+>
+  <div
+    class="LoadingElements__Spinner-sc-1f42l8z-0 cJUGse"
+  />
+  <form
+    class="Form-sc-13gsu68-0 ceNKam"
+  >
+    <label
+      for="symbol"
+    >
+      Symbol:
+    </label>
+    <input
+      class="Input-sc-1o18g32-0 dVYcZi"
+      name="symbol"
+      required=""
+      type="text"
+      value="testSymbol"
+    />
+    <label
+      for="name"
+    >
+      Name:
+    </label>
+    <input
+      class="Input-sc-1o18g32-0 dVYcZi"
+      name="name"
+      required=""
+      type="text"
+      value="testNamewithsomeextrastringssoitsuniqle"
+    />
+    <label
+      for="description"
+    >
+      Description:
+    </label>
+    <textarea
+      class="Input__TextArea-sc-1o18g32-1 gVsiSV"
+      name="description"
+      required=""
+      type="text"
+    >
+      testDescription
+    </textarea>
+    <label
+      for="icon"
+    >
+      Icon Link:
+    </label>
+    <input
+      class="Input-sc-1o18g32-0 dVYcZi"
+      name="iconURL"
+      required=""
+      type="url"
+      value="testURL"
+    />
+    <button
+      class="SubmitBtnElements__SubmitBtnWrapper-sc-15ad74p-0 dSStNU"
+    >
+       
+      Submit
+       
+    </button>
+  </form>
+</div>
+`;
