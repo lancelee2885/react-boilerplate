@@ -103,7 +103,7 @@ AddCrypto.propTypes = {
   isSubmitted: PropTypes.bool,
   submitted: PropTypes.object,
   loading: PropTypes.bool,
-  err: PropTypes.bool || PropTypes.object,
+  err: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
 };
 
 const mapStateToProps = createStructuredSelector({
