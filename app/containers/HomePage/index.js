@@ -44,9 +44,9 @@ export function HomePage({ cryptos, loading, loadCryptosProp, error }) {
 
   return (
     <ItemsContanier>
+      {loading ? <LoadingSpinner /> : null}
+      {error ? <p>Something Went Wrong</p> : null}
       <ItemsWrapper>
-        {loading ? <LoadingSpinner /> : null}
-        {error ? <p>Something Went Wrong</p> : null}
         {cryptos.map(c => (
           <Item
             key={c.symbol}
