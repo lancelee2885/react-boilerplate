@@ -12,7 +12,7 @@ import { makeFormDataSelector } from './selectors';
 const requestURL = `http://localhost:3000/api/`;
 
 // formdata submission
-async function submitToServer(data) {
+export async function submitToServer(data) {
   try {
     await axios.post(requestURL, data);
   } catch (err) {
@@ -30,7 +30,6 @@ export function* createNewCrypto() {
   const data = yield select(makeFormDataSelector());
 
   try {
-    // Call our request helper (see 'utils/request')
     yield call(submitToServer, data);
     yield put(formDataSubmitted(data));
   } catch (err) {
