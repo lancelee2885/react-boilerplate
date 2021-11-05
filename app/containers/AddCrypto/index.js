@@ -51,7 +51,7 @@ export function AddCrypto({
     if (isSubmitted) {
       return <p> {submitted.name} was added</p>;
     }
-    return null;
+    return undefined;
   }
 
   return (
