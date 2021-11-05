@@ -21,11 +21,12 @@ import makeSelectAddCrypto, {
   makeFormDataSelector,
   makeIsSubmittedSelector,
   makeSubmittedSelector,
+  makeLoadingSelector,
+  makeErrorSelector,
 } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import { changeFormData, submitFormData } from './actions';
-import { makeLoadingSelector } from '../HomePage/selectors';
 
 export function AddCrypto({
   formData,
@@ -34,13 +35,27 @@ export function AddCrypto({
   isSubmitted,
   submitted,
   loading,
+  err,
 }) {
   useInjectReducer({ key: 'addCrypto', reducer });
   useInjectSaga({ key: 'addCrypto', saga });
 
+  function showLoading() {
+    if (loading) {
+      return <LoadingSpinner />;
+    }
+    if (err) {
+      return <p> Something Went Wrong</p>;
+    }
+    if (isSubmitted) {
+      return <p> {submitted.name} is added</p>;
+    }
+    return null;
+  }
+
   return (
     <FormWrapper>
-      <Form onSubmit={evt => onSubmitForm(evt, formData)}>
+      <Form onSubmit={evt => onSubmitForm(evt)}>
         <label htmlFor="symbol">Symbol:</label>
         <Input
           type="text"
@@ -75,8 +90,7 @@ export function AddCrypto({
         />
         <SubmitBtn text="Submit" />
       </Form>
-      {loading ? <LoadingSpinner /> : null}
-      {isSubmitted ? <p> {submitted.name} is added</p> : null}
+      {showLoading()}
     </FormWrapper>
   );
 }
@@ -88,6 +102,7 @@ AddCrypto.propTypes = {
   isSubmitted: PropTypes.bool,
   submitted: PropTypes.object,
   loading: PropTypes.bool,
+  err: PropTypes.bool || PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -96,6 +111,7 @@ const mapStateToProps = createStructuredSelector({
   isSubmitted: makeIsSubmittedSelector(),
   submitted: makeSubmittedSelector(),
   loading: makeLoadingSelector(),
+  err: makeErrorSelector(),
 });
 
 export function mapDispatchToProps(dispatch) {
@@ -107,9 +123,9 @@ export function mapDispatchToProps(dispatch) {
       };
       dispatch(changeFormData(newData));
     },
-    onSubmitForm: (evt, formData) => {
+    onSubmitForm: evt => {
       evt.preventDefault();
-      dispatch(submitFormData(formData));
+      dispatch(submitFormData());
     },
   };
 }
