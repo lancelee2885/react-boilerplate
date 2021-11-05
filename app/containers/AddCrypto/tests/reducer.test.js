@@ -1,32 +1,100 @@
-// import produce from 'immer';
+import produce from 'immer';
 import addCryptoReducer from '../reducer';
-// import { someAction } from '../actions';
+import {
+  changeFormData,
+  submitFormData,
+  formDataSubmitted,
+  formDataError,
+} from '../actions';
+
+const testFormData = {
+  symbol: 'testSymbol',
+  name: 'testName',
+  description: 'testDes',
+  iconURL: 'testUrl',
+};
+
+const emptyFormData = {
+  symbol: '',
+  name: '',
+  description: '',
+  iconURL: '',
+};
 
 /* eslint-disable default-case, no-param-reassign */
 describe('addCryptoReducer', () => {
   let state;
   beforeEach(() => {
     state = {
-      // default state params here
+      formData: {
+        symbol: '',
+        name: '',
+        description: '',
+        iconURL: '',
+      },
+      submitted: {
+        symbol: '',
+        name: '',
+        description: '',
+        iconURL: '',
+      },
+      isSubmitted: false,
+      loading: false,
+      err: false,
     };
   });
 
-  it('returns the initial state', () => {
+  it('should return the initial state', () => {
     const expectedResult = state;
     expect(addCryptoReducer(undefined, {})).toEqual(expectedResult);
   });
 
-  /**
-   * Example state change comparison
-   *
-   * it('should handle the someAction action correctly', () => {
-   *   const expectedResult = produce(state, draft => {
-   *     draft.loading = true;
-   *     draft.error = false;
-   *     draft.userData.nested = false;
-   *   });
-   *
-   *   expect(appReducer(state, someAction())).toEqual(expectedResult);
-   * });
-   */
+  it('should handle the changeFormData action correctly', () => {
+    const expectedResult = produce(state, draft => {
+      draft.isSubmitted = false;
+      draft.formData = testFormData;
+    });
+
+    expect(addCryptoReducer(state, changeFormData(testFormData))).toEqual(
+      expectedResult,
+    );
+  });
+
+  it('should handle the submitFormData action correctly', () => {
+    const expectedResult = produce(state, draft => {
+      draft.loading = true;
+      draft.err = false;
+    });
+
+    expect(addCryptoReducer(state, submitFormData())).toEqual(expectedResult);
+  });
+
+  it('should handle the formDataSubmitted action correctly', () => {
+    const expectedResult = produce(state, draft => {
+      draft.loading = false;
+      draft.err = false;
+      draft.isSubmitted = true;
+      draft.submitted = testFormData;
+      draft.formData = emptyFormData;
+    });
+
+    expect(addCryptoReducer(state, formDataSubmitted(testFormData))).toEqual(
+      expectedResult,
+    );
+  });
+
+  it('should handle the formDataError action correctly', () => {
+    const fixture = {
+      msg: 'Not found',
+    };
+    const expectedResult = produce(state, draft => {
+      draft.loading = false;
+      draft.isSubmitted = false;
+      draft.err = fixture;
+    });
+
+    expect(addCryptoReducer(state, formDataError(fixture))).toEqual(
+      expectedResult,
+    );
+  });
 });
