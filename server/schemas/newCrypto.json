@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://my.crypto.com/newCrypto.schema.json",
+  "type": "object",
+  "properties": {
+    "symbol": {
+      "type": "string",
+      "minLength": 1,
+      "message": {
+        "minLength": "Please enter the symbol"
+      }
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "message": {
+        "minLength": "Please enter the name"
+      }
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "message": {
+        "minLength": "Please enter the description"
+      }
+    },
+    "iconURL": {
+      "type": "string",
+      "format": "uri",
+      "message": {
+        "minLength": "Please enter the icon link",
+        "format": "Please enter a valid icon link"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "required": ["symbol", "name", "description", "iconURL"]
+}
