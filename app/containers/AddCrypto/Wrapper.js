@@ -8,7 +8,7 @@ const FormWrapper = styled.div`
   align-content: flex-start;
   justify-content: center;
   justify-items: center;
-  height: 100vh;
+  height: fit-content;
   width: 100%;
 `;
 
