@@ -7,29 +7,28 @@
       "type": "string",
       "minLength": 1,
       "message": {
-        "minLength": "Please enter the symbol"
+        "minLength": "*Please enter the symbol*"
       }
     },
     "name": {
       "type": "string",
       "minLength": 1,
       "message": {
-        "minLength": "Please enter the name"
+        "minLength": "*Please enter the name*"
       }
     },
     "description": {
       "type": "string",
       "minLength": 1,
       "message": {
-        "minLength": "Please enter the description"
+        "minLength": "*Please enter the description*"
       }
     },
     "iconURL": {
       "type": "string",
       "format": "uri",
       "message": {
-        "minLength": "Please enter the icon link",
-        "format": "Please enter a valid icon link"
+        "format": "*Please enter a valid icon link*"
       }
     }
   },

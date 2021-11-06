@@ -35,7 +35,7 @@ app.post('/api', (req, res, next) => {
     if (!validator.valid) {
       const errs = validator.errors.map(e => {
         const violation = e.name;
-        const errMessage = e.schema?.message[violation];
+        const errMessage = e.schema.message[violation];
         return errMessage;
       });
       throw new BadRequestError(errs);
@@ -43,7 +43,6 @@ app.post('/api', (req, res, next) => {
     storedCryptocurrencyList.push(req.body);
     return res.status(201).send(`added`);
   } catch (err) {
-    console.log('ERR', err);
     return next(err);
   }
 });
@@ -90,7 +89,8 @@ app.listen(port, host, async err => {
 app.use((req, res, next) => next(new NotFoundError()));
 
 /** Generic error handler; anything unhandled goes here. */
-app.use((err, req, res) => {
+// eslint-disable-next-line no-unused-vars
+app.use((err, req, res, next) => {
   if (process.env.NODE_ENV !== 'test') console.error(err.stack);
   const status = err.status || 500;
   const { message } = err;
