@@ -47,12 +47,12 @@ export function AddCrypto({
     }
     if (err) {
       return (
-        <p>
+        <div>
           {' '}
           {err.map(e => (
-            <p>{e}</p>
+            <p key={e}>{e}</p>
           ))}{' '}
-        </p>
+        </div>
       );
     }
     if (isSubmitted) {
