@@ -33,7 +33,7 @@ export function* createNewCrypto() {
     yield call(submitToServer, data);
     yield put(formDataSubmitted(data));
   } catch (err) {
-    yield put(formDataError(err));
+    yield put(formDataError(err.response.data.error.message));
   }
 }
 

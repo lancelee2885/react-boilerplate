@@ -46,7 +46,14 @@ export function AddCrypto({
       return <LoadingSpinner />;
     }
     if (err) {
-      return <p> Something Went Wrong</p>;
+      return (
+        <p>
+          {' '}
+          {err.map(e => (
+            <p>{e}</p>
+          ))}{' '}
+        </p>
+      );
     }
     if (isSubmitted) {
       return <p> {submitted.name} was added</p>;
@@ -62,7 +69,6 @@ export function AddCrypto({
         <Input
           type="text"
           name="symbol"
-          required
           value={formData.symbol}
           onChange={evt => onChangeFormData(evt, formData)}
         />
@@ -70,7 +76,6 @@ export function AddCrypto({
         <Input
           type="text"
           name="name"
-          required
           value={formData.name}
           onChange={evt => onChangeFormData(evt, formData)}
         />
@@ -78,15 +83,13 @@ export function AddCrypto({
         <TextArea
           type="text"
           name="description"
-          required
           value={formData.description}
           onChange={evt => onChangeFormData(evt, formData)}
         />
         <label htmlFor="icon">Icon Link:</label>
         <Input
-          type="url"
+          type="text"
           name="iconURL"
-          required
           value={formData.iconURL}
           onChange={evt => onChangeFormData(evt, formData)}
         />
@@ -103,7 +106,7 @@ AddCrypto.propTypes = {
   isSubmitted: PropTypes.bool,
   submitted: PropTypes.object,
   loading: PropTypes.bool,
-  err: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
+  err: PropTypes.oneOfType([PropTypes.bool, PropTypes.array]),
 };
 
 const mapStateToProps = createStructuredSelector({
