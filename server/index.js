@@ -15,6 +15,10 @@ const { resolve } = require('path');
 const app = express();
 const cryptocurrency = require('./crypto');
 
+const jsonschema = require('jsonschema');
+const newCryptoSchema = require('./schemas/newCrypto.json');
+const { BadRequestError, NotFoundError } = require('./helpers/ExpressErrors');
+
 const storedCryptocurrencyList = [...cryptocurrency];
 // JSON Body Parser
 app.use(express.json());
@@ -25,9 +29,23 @@ app.get('/api', (req, res) =>
   res.json({ cryptocurrency: storedCryptocurrencyList }),
 );
 
-app.post('/api', (req, res) => {
-  storedCryptocurrencyList.push(req.body);
-  return res.status(201).send(`added`);
+app.post('/api', (req, res, next) => {
+  try {
+    const validator = jsonschema.validate(req.body, newCryptoSchema);
+    if (!validator.valid) {
+      const errs = validator.errors.map(e => {
+        const violation = e.name;
+        const errMessage = e.schema?.message[violation];
+        return errMessage;
+      });
+      throw new BadRequestError(errs);
+    }
+    storedCryptocurrencyList.push(req.body);
+    return res.status(201).send(`added`);
+  } catch (err) {
+    console.log('ERR', err);
+    return next(err);
+  }
 });
 
 // In production we need to pass these values in instead of relying on webpack
@@ -66,4 +84,18 @@ app.listen(port, host, async err => {
   } else {
     logger.appStarted(port, prettyHost);
   }
+});
+
+/** Handle 404 errors -- this matches everything */
+app.use((req, res, next) => next(new NotFoundError()));
+
+/** Generic error handler; anything unhandled goes here. */
+app.use((err, req, res) => {
+  if (process.env.NODE_ENV !== 'test') console.error(err.stack);
+  const status = err.status || 500;
+  const { message } = err;
+
+  return res.status(status).json({
+    error: { message, status },
+  });
 });
