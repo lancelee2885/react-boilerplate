@@ -46,9 +46,9 @@ Run `npm test` or `jest --coverage` for test.
 - [React](https://reactjs.org/) - Javascript frontend framework
 - [Node.js](https://nodejs.org/en/) - Javascript backend environment
 - [Express](https://expressjs.com/) - Node.js backend framework
-- [React Redux](https://www.postgresql.org/) - State management library.
-- [Redux Saga](https://www.postgresql.org/) - Redux middleware for handling asynchronous api call. 
-- [Redux Reselect](https://www.postgresql.org/) - Selector library for redux.
+- [React Redux](https://react-redux.js.org/) - State management library.
+- [Redux Saga](https://redux-saga.js.org/) - Redux middleware for handling asynchronous api call. 
+- [Redux Reselect](https://github.com/reduxjs/reselect) - Selector library for redux.
 
 <br>
 
