@@ -15,7 +15,8 @@ import { useInjectReducer } from 'utils/injectReducer';
 import Form from './Form';
 import { Input, TextArea } from './Input';
 import SubmitBtn from '../../components/SubmitBtn';
-import FormWrapper from './Wrapper';
+import Wrapper from './Wrapper';
+import ErrorMessage from './ErrorMessage';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import makeSelectAddCrypto, {
   makeFormDataSelector,
@@ -47,12 +48,12 @@ export function AddCrypto({
     }
     if (err) {
       return (
-        <div>
+        <Wrapper>
           {' '}
           {err.map(e => (
-            <p key={e}>{e}</p>
+            <ErrorMessage key={e}>{e}</ErrorMessage>
           ))}{' '}
-        </div>
+        </Wrapper>
       );
     }
     if (isSubmitted) {
@@ -62,7 +63,7 @@ export function AddCrypto({
   }
 
   return (
-    <FormWrapper>
+    <Wrapper>
       {showLoading()}
       <Form onSubmit={evt => onSubmitForm(evt)}>
         <label htmlFor="symbol">Symbol:</label>
@@ -95,7 +96,7 @@ export function AddCrypto({
         />
         <SubmitBtn text="Submit" />
       </Form>
-    </FormWrapper>
+    </Wrapper>
   );
 }
 
