@@ -2,7 +2,7 @@
 
 exports[`<AddCrypto /> should render and match the snapshot 1`] = `
 <div
-  class="Wrapper__FormWrapper-n4amsx-0 SvHUk"
+  class="Wrapper-n4amsx-0 eKwehz"
 >
   <div
     class="LoadingElements__Spinner-sc-1f42l8z-0 cJUGse"
@@ -18,7 +18,6 @@ exports[`<AddCrypto /> should render and match the snapshot 1`] = `
     <input
       class="Input-sc-1o18g32-0 dVYcZi"
       name="symbol"
-      required=""
       type="text"
       value="testSymbol"
     />
@@ -30,7 +29,6 @@ exports[`<AddCrypto /> should render and match the snapshot 1`] = `
     <input
       class="Input-sc-1o18g32-0 dVYcZi"
       name="name"
-      required=""
       type="text"
       value="testNamewithsomeextrastringssoitsuniqle"
     />
@@ -42,7 +40,6 @@ exports[`<AddCrypto /> should render and match the snapshot 1`] = `
     <textarea
       class="Input__TextArea-sc-1o18g32-1 gVsiSV"
       name="description"
-      required=""
       type="text"
     >
       testDescription
@@ -55,8 +52,7 @@ exports[`<AddCrypto /> should render and match the snapshot 1`] = `
     <input
       class="Input-sc-1o18g32-0 dVYcZi"
       name="iconURL"
-      required=""
-      type="url"
+      type="text"
       value="testURL"
     />
     <button

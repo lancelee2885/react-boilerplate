@@ -38,7 +38,7 @@ describe('<AddCrypto />', () => {
             isSubmitted
             submitted={submittedData}
             loading
-            err
+            err={[]}
           />
         </IntlProvider>
       </Provider>,
@@ -65,7 +65,7 @@ describe('<AddCrypto />', () => {
       </Provider>,
     );
     expect(firstChild.innerHTML).toContain('Loading');
-    expect(firstChild.innerHTML).not.toContain('Something Went Wrong');
+    expect(firstChild.innerHTML).not.toContain('ErrorMessage');
     expect(firstChild.innerHTML).not.toContain(
       'testNamewithsomeextrastringssoitsuniqle',
     );
@@ -84,12 +84,12 @@ describe('<AddCrypto />', () => {
             isSubmitted={false}
             submitted={submittedData}
             loading={false}
-            err
+            err={['error']}
           />
         </IntlProvider>
       </Provider>,
     );
-    expect(firstChild.innerHTML).toContain('Something Went Wrong');
+    expect(firstChild.innerHTML).toContain('ErrorMessage');
     expect(firstChild.innerHTML).not.toContain('Loading');
     expect(firstChild.innerHTML).not.toContain(
       'testNamewithsomeextrastringssoitsuniqle',
@@ -114,7 +114,7 @@ describe('<AddCrypto />', () => {
         </IntlProvider>
       </Provider>,
     );
-    expect(firstChild.innerHTML).not.toContain('Something Went Wrong');
+    expect(firstChild.innerHTML).not.toContain('Error Message');
     expect(firstChild.innerHTML).not.toContain('Loading');
     expect(firstChild.innerHTML).toContain(
       'testNamewithsomeextrastringssoitsuniqle',

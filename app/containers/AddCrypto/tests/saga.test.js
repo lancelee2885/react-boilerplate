@@ -34,10 +34,11 @@ describe('createNewCrypto Saga', () => {
   });
 
   it('should call the formDataError action if the response errors', () => {
-    const response = new Error('Some error');
+    const err = new Error('Some error');
+    err.response = { data: { error: { message: err } } };
     createCryptosGenerator.next();
-    const putDescriptor = createCryptosGenerator.throw(response).value;
-    expect(putDescriptor).toEqual(put(formDataError(response)));
+    const putDescriptor = createCryptosGenerator.throw(err).value;
+    expect(putDescriptor).toEqual(put(formDataError(err)));
   });
 });
 
