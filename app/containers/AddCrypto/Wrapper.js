@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
-const FormWrapper = styled.div`
+const Wrapper = styled.div`
   color: #ffffff;
   background-color: #000;
   display: grid;
+  text-align: center;
   align-items: center;
   align-content: flex-start;
   justify-content: center;
@@ -12,4 +13,4 @@ const FormWrapper = styled.div`
   width: 100%;
 `;
 
-export default FormWrapper;
+export default Wrapper;

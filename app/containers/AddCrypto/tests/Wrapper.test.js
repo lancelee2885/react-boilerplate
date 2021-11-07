@@ -1,21 +1,21 @@
 import React from 'react';
 import { render } from 'react-testing-library';
 
-import FormWrapper from '../Wrapper';
+import Wrapper from '../Wrapper';
 
-describe('<FormWrapper />', () => {
+describe('<Wrapper />', () => {
   it('should render an <div> tag', () => {
-    const { container } = render(<FormWrapper />);
+    const { container } = render(<Wrapper />);
     expect(container.firstChild.tagName).toEqual('DIV');
   });
 
   it('should have a class attribute', () => {
-    const { container } = render(<FormWrapper />);
+    const { container } = render(<Wrapper />);
     expect(container.firstChild.hasAttribute('class')).toBe(true);
   });
 
   it('should not adopt an invalid attribute', () => {
-    const { container } = render(<FormWrapper attribute="test" />);
+    const { container } = render(<Wrapper attribute="test" />);
     expect(container.firstChild.hasAttribute('attribute')).toBe(false);
   });
 });
