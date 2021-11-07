@@ -13,8 +13,31 @@ This application includes features:
 
 1. Make sure that you have Node.js v8.15.1 and npm v5 or above installed.
 2. Clone the parent repository (the whole boilerplate, not just the app tree).
-3. Run `npm run setup` in order to install dependencies and clean the git repo.
+3. Run `npm i` in order to install dependencies.
 4. Start the React App `npm start`.
+
+<br>
+
+## Test
+
+This app is tested with Jest.
+Run `npm test` or `jest --coverage` for test.
+
+<br>
+
+## Backend
+
+### Endpoints
+- Get `/api`
+    - No authorization/authentication needed. Simply make a get request to `/api` to fetch all cryptocurrencies information in JSON.
+- Post `/api`
+    - No authorization/authentication needed. Validation is provided with JsonSchema.
+    - Accepts JSON body.
+    - Accepted data:
+        - symbol: required, minLength: 1 chr.
+        - name: required, minLength: 1 chr.
+        - description: required, minLength: 1 chr.
+        - iconURL: required, url format.
 
 <br>
 
